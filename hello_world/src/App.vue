@@ -1,19 +1,19 @@
 <template>
   <div id="app">
-    <HelloWorld msg="yeeeeeey"/>
+    <div 
+      id="nav" 
+      class="tab-area-base">
+      <ul class="tab-menu-base">
+        <li><router-link to="/">Home</router-link></li>
+        <!-- *** -->
+        <!-- 省略 -->
+        <!-- *** -->
+        <li><router-link to="/routing">Rounting Test</router-link></li>
+      </ul>
+    </div>
+    <router-view />
   </div>
 </template>
-
-<script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
 
 <style>
 #app {
