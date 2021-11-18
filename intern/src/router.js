@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Overview from './components/Overview.vue'
 import Detail from './components/Detail.vue'
+import Compare from './components/Compare.vue'
 
 Vue.use(Router)
 
@@ -17,9 +18,14 @@ export default new Router({
       component: Overview
     },
     {
-      path: '/:id',
+      path: '/detail/:id',
       name: 'detail',
-      component: Detail 
+      component: Detail
+    },
+    {
+      path: '/compare/:targets',
+      name: 'compare',
+      component: Compare
     }
   ]
 })

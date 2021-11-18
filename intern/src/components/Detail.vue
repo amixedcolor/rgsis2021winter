@@ -37,7 +37,8 @@ export default {
     }
   },
   mounted: function(){
-    axios.get('./data/users.json')
+    console.log("now in mounted of detail")
+    axios.get('../data/users.json')
     .then(function(response){
         this.users = response.data.users
         console.log(this.users)
