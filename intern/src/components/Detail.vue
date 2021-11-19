@@ -1,27 +1,68 @@
 <template>
-  <div>
-    <!--<h1>This page is detail.</h1>-->
-    <div>
-      <table>
-        <th>
-          KEY
-        </th>
-        <th>
-          VALUE
-        </th>
-        <tr
-          v-for="(value, name) in users[$route.params.id - 1]"
-          :key="name">
-          <td>
-            {{ name }}
-          </td>
-          <td>
-            {{ value }}
-          </td>
-        </tr>
-      </table>
-    </div>
+  <div class="w-100">
+    <h1 class="py-5">{{ users[$route.params.id - 1].name }}はこんな人</h1>
+    <div class="w-75 m-auto">
+      <!-- 基本情報コンテンツ -->
+      <div class="d-flex flex-row py-5" style="height: 500px; gap: 30px">
+        <div class="w-50">
+          <img
+            :src="'./img/' + users[$route.params.id - 1].facephoto"
+            class="h-100"
+            style=""
+            alt="画像"
+          />
+        </div>
+        <div class="d-flex flex-column justify-content-center w-50 h4">
+          <p style="text-align: left">
+            名前：{{ users[$route.params.id - 1].name }}
+          </p>
+          <br />
+          <p style="text-align: left">
+            生年月日：{{ users[$route.params.id - 1].bir }}
+          </p>
+          <br />
+          <p style="text-align: left">
+            出身大学：{{ users[$route.params.id - 1].uni }}
+          </p>
+        </div>
+      </div>
+      <!-- 基本情報コンテンツ -->
 
+      <!-- 趣味コンテンツ -->
+      <div class="d-flex flex-row py-5" style="height: 500px; gap: 30px">
+        <div class="w-50">
+          <p class="h5" style="text-align: left; line-height: 1.4">
+            {{ users[$route.params.id - 1].introduction }}
+          </p>
+          <br />
+        </div>
+        <div class="w-50">
+          <img
+            :src="'./img/' + users[$route.params.id - 1].photo1"
+            class="h-100"
+            style=""
+            alt="画像"
+          />
+        </div>
+      </div>
+      <!-- 趣味コンテンツ -->
+
+      <!--おもしろエピソードコンテンツ -->
+      <div class="py-5">
+        <p class="h3 pb-3">おもしろエピソード</p>
+        <p class="h5">
+          {{ users[$route.params.id - 1].txt1 }}
+        </p>
+      </div>
+      <!--おもしろエピソードコンテンツ -->
+
+      <!-- 一問一答コンテンツ -->
+      <div class="py-5">
+        <p class="h3 pb-3">一問一答</p>
+        <p class="h5">{{ users[$route.params.id - 1].txt2 }}</p>
+      </div>
+      <!-- 一問一答コンテンツ -->
+    </div>
   </div>
 </template>
 
@@ -37,8 +78,7 @@ export default {
     }
   },
   mounted: function(){
-    console.log("now in mounted of detail")
-    axios.get('../data/users.json')
+    axios.get('./data/users.json')
     .then(function(response){
         this.users = response.data.users
         console.log(this.users)

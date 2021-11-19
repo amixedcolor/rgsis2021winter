@@ -18,9 +18,9 @@ export default new Router({
       component: Overview
     },
     {
-      path: '/detail/:id',
+      path: '/:id',
       name: 'detail',
-      component: Detail
+      component: Detail 
     },
     {
       path: '/compare/:targets',
